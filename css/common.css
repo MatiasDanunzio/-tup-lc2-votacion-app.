@@ -3,11 +3,32 @@
 * {
   font-family: 'Roboto', sans-serif;
 }
-
 html,
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   background-color: rgb(240, 240, 240);
 }
-
+.header-page {
+  background-color: #3098F2;
+}
+.nav-page{
+  padding: 10px;
+  justify-content: end;
+  display: flex;
+  margin: 0px;
+  background-color: #403E3E;
+  list-style-type: none;
+}
+.header-page img{
+  width: 180px;
+  padding: 8px 25px;
+}
+.active{
+  border: solid 2px white;
+  border-radius: 25px;
+  padding: 5px 20px;
+  margin: 0px 5px;
+  text-decoration: none;
+  color: white ;
+}

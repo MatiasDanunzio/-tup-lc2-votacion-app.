@@ -1,0 +1,22 @@
+*
+main{
+    padding: 0px 30px;
+}
+h2{
+    font-size: 40px;
+}
+.sec-titulo{
+    display: flex;
+}
+p{
+    font-size: 20px;    
+    max-width: 55%;
+}
+.sec-titulo div img{
+    width: 440px;
+    padding-top: 20px;
+    padding-right: 350px;
+}
+body{
+    background-color: white;
+}
