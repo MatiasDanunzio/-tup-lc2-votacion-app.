@@ -135,15 +135,16 @@ body {
     display: flex;
     background-color: var(--magenta);
     border-radius: 5px;
-    color: #FFF;
     height: 100px;
     width: 400px;
     margin: 25px;
     padding: 1rem;
-    font-size: 28px;
-    text-align: left;
+    text-align: center;
     border: none;
     cursor: pointer;
+    align-items: center;
+    color: #FFF;
+    font-size: 28px;
 }
 
 .link-boton-paso {
@@ -167,6 +168,7 @@ body {
     text-align: left;
     border: none;
     cursor: pointer;
+    align-items: center;
 }
 
 #sec-contenido {
