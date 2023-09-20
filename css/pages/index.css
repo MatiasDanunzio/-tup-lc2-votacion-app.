@@ -132,6 +132,7 @@ body {
 }
 
 .paso {
+    display: flex;
     background-color: var(--magenta);
     border-radius: 5px;
     color: #FFF;
@@ -142,9 +143,19 @@ body {
     font-size: 28px;
     text-align: left;
     border: none;
+    cursor: pointer;
+}
+
+.link-boton-paso {
+    text-decoration: none;
+}
+
+.link-boton-general {
+    text-decoration: none;
 }
 
 .general {
+    display: flex;
     background-color: var(--celeste);
     border-radius: 5px;
     color: #FFF;
@@ -155,6 +166,7 @@ body {
     font-size: 28px;
     text-align: left;
     border: none;
+    cursor: pointer;
 }
 
 #sec-contenido {

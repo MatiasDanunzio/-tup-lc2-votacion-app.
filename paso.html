@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema de Publicación de Resultados Electorales</title>
     <link rel="shortcut icon" type="image/png" href="favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="./css/pages/paso.css">
     <link rel="stylesheet" href="css/common.css" />
@@ -19,6 +20,7 @@
         </div>
         <!--Barra de menú principal-->
         <ul class="nav-page">
+            <div class="nav-page-left">
             <li>
                 <select name="anio" id="anio" class="combos">
                     <option value="anio">Año</option>
@@ -40,9 +42,10 @@
                     <option value="">2023</option>
                 </select>
             </li>
-            <li><a href="" class="filtrar">FILTRAR</a></li>
+            <li><a href="" class="filtrar"><i class="fa-solid fa-magnifying-glass icono-filtrar"></i>FILTRAR</a></li>
             <li><a href="./generales.html" class="general">GENERAL</a></li>
             <li><a href="./informes.html" class="informes">INFORMES</a></li>
+            </div>
             <li><a href="./index.html" class="inicio">INICIO</a></li>
         </ul>
     </header>
@@ -315,14 +318,22 @@
             <div class="chart-wrap horizontal recuadros">
                 <div class="title">Resumen de Votos</div>
                 <div class="grid">
-                    <div class="bar" style="--bar-value:85%;--bar-color:var(--grafica-amarillo);" data-name="Partido 1" title="Your Blog 85%"></div>
-                    <div class="bar" style="--bar-value:23%;--bar-color:var(--grafica-lila2);" data-name="Partido 2" title="Medium 23%"></div>
-                    <div class="bar" style="--bar-value:7%;--bar-color:var(--grafica-bordo);" data-name="Partido 3" title="Tumblr 7%"></div>
-                    <div class="bar" style="--bar-value:38%;--bar-color:var(--grafica-celeste);" data-name="Partido 4" title="Facebook 38%"></div>
-                    <div class="bar" style="--bar-value:35%;--bar-color:var(--grafica-lila-claro);" data-name="Partido 5" title="YouTube 35%"></div>
-                    <div class="bar" style="--bar-value:30%;--bar-color:var(--grafica-rojo);" data-name="Partido 6" title="LinkedIn 30%"></div>
-                    <div class="bar" style="--bar-value:5%;--bar-color:var(--grafica-gris);" data-name="Partido 7" title="Twitter 5%"></div>
-                    <div class="bar" style="--bar-value:20%;--bar-color:var(--grafica-verde);" data-name="Otros" title="Other 20%"></div>
+                    <div class="bar" style="--bar-value:85%;--bar-color:var(--grafica-amarillo);" data-name="Partido 1"
+                        title="Your Blog 85%"></div>
+                    <div class="bar" style="--bar-value:23%;--bar-color:var(--grafica-lila2);" data-name="Partido 2"
+                        title="Medium 23%"></div>
+                    <div class="bar" style="--bar-value:7%;--bar-color:var(--grafica-bordo);" data-name="Partido 3"
+                        title="Tumblr 7%"></div>
+                    <div class="bar" style="--bar-value:38%;--bar-color:var(--grafica-celeste);" data-name="Partido 4"
+                        title="Facebook 38%"></div>
+                    <div class="bar" style="--bar-value:35%;--bar-color:var(--grafica-lila-claro);"
+                        data-name="Partido 5" title="YouTube 35%"></div>
+                    <div class="bar" style="--bar-value:30%;--bar-color:var(--grafica-rojo);" data-name="Partido 6"
+                        title="LinkedIn 30%"></div>
+                    <div class="bar" style="--bar-value:5%;--bar-color:var(--grafica-gris);" data-name="Partido 7"
+                        title="Twitter 5%"></div>
+                    <div class="bar" style="--bar-value:20%;--bar-color:var(--grafica-verde);" data-name="Otros"
+                        title="Other 20%"></div>
                 </div>
             </div>
 

@@ -36,14 +36,24 @@
 /*------------NAVBAR PASO EMPIEZA  --------------*/
 .nav-page {
     display: flex;
+    justify-content: space-between;
+    padding: 4px 2px;
+    background-color: var(--fondo-Menu);
     list-style-type: none;
+    align-items: center;
+    margin: 0px;
 }
 
 .nav-page li a {
     text-decoration: none;
     padding: 10px;
 }
-
+.nav-page li{
+    padding: 0px 4px;
+}
+.nav-page-left{
+    display: flex;
+}
 .filtrar {
     background-color: white;
     border-radius: 15px;
@@ -75,8 +85,70 @@
     padding: 5px;
     color: var(--celeste);
     font-weight: bold;
+    width: 83px;
 }
 
+.filtrar {
+    border-radius: 15px;
+    padding: 5px;
+    font-family: #FFF;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--textos);
+    display: flex;
+    width: 90px;
+    justify-content: center;
+}
+.icono-filtrar{
+    text-align: center;
+    padding: 1px;
+    margin-right: 8px;
+}
+.inicio {
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #FFF;display: flex;
+    width: 90px;
+    justify-content: center;
+  }
+  
+  .inicio:hover {
+    color: var(--textos);
+  }
+  .informes {
+    border: solid 2px;
+    border-color: var(--gris-claro);
+    padding: 10px 20px;
+    color: #FFF;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 15px;
+    margin-left:px;
+    min-width: 90px;
+    display: flex;
+    justify-content: center;
+  }
+  .general {
+    border: none;
+    background-color: var(--celeste);
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: #FFF;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 90px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+  }
+  
 /*------------NAVBAR PASO TERMINA -------------*/
 
 /*-----------BOTON RESULTADOS EMPIEZA-----------*/
@@ -255,7 +327,8 @@
 .mapa {
     display: flex;
 }
-.cuadrosDetalle{
+
+.cuadrosDetalle {
     justify-content: center;
 }
 
