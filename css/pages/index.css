@@ -52,7 +52,7 @@
 }
 
 .botonNavPaso {
-    border: none;
+    border: solid 2px var(--magenta);
     background-color: var(--magenta);
     border-radius: 8px;
     padding: 10px 30px;
@@ -68,7 +68,7 @@
 }
 
 .botonNavGeneral {
-    border: none;
+    border: solid 2px var(--celeste);
     background-color: var(--celeste);
     border-radius: 8px;
     padding: 10px 20px;

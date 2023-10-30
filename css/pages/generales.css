@@ -225,6 +225,9 @@
     margin-left: 30px;
 }
 
+.textos-recuadros{
+    font-weight: bold;
+}
 
 .recuadrosInformativos {
     display: flex;
@@ -265,11 +268,17 @@
     height: 50px;
     margin: 10px;
     margin-left: 30px;
+    width: 184px;
 }
 
 .agInforme:hover {
     color: var(--textos);
 }
+.contenedor-cuadro-politica{
+    overflow: scroll;
+    height: 205px;
+}
+
 
 .cuadrosDetalle {
     display: flex;
@@ -278,10 +287,9 @@
 }
 
 .agrupacionPolitica {
-    overflow: scroll;
+    
     height: 325px;
     width: 500px;
-    margin: 25px;
 }
 
 .peso {
@@ -301,7 +309,7 @@
 }
 
 .mapaCaja {
-    margin: 25px;
+    margin: 0px 30px;
 }
 
 /* --- BARRA DE PROGRESO EMPIEZA --- */
@@ -347,6 +355,7 @@
     padding: 10px;
     border: 1px var(--borde-Grilla) solid;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    height: 300px;
 }
 
 .mapa {

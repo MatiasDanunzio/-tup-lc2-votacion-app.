@@ -78,9 +78,14 @@ h3 {
   margin-top: 0px auto;
   padding: 0.5em;
 }
+.header-page a{
+  justify-content: center;
+  width: 90%;
+}
 
 .header-page img {
   width: 150px;
+  
 }
 
 /*------------ CONTENIDO GENERAL TERMINA --------------*/
@@ -93,13 +98,12 @@ footer {
   display: flex;
   justify-content: center;
 }
-
 footer p {
   color: var(--texto-footer);
   font-size: 12px;
   max-width: 700px;
+  line-height: 1.5;
 }
-
 footer img {
   height: 40px;
   align-self: top;
@@ -111,6 +115,7 @@ footer img {
 footer p a {
   text-decoration: none;
   color: var(--celeste);
+  
 }
 
 /*---------- TERMINA FOOTER ------------------*/

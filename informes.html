@@ -11,7 +11,7 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="./css/pages/informes.css">
+    <link rel="stylesheet" href="css/pages/informes.css">
 </head>
 
 <body>
@@ -36,8 +36,10 @@
         <section id="sec-mensaje">
             <p class="botonResultadoVerde"><i class="fa-solid fa-thumbs-up iconosAlerta"></i>Se agrego con
                 exito el resultado al informe</p>
-            <p class="botonResultadoRojo"><i class="fa-solid fa-triangle-exclamation iconosAlerta"></i>Error. Se produjo un error al intentar agregar resultados al informe</p>
-            <p class="botonResultadoAmarillo"><i class="fa-solid fa-exclamation iconosAlerta"></i>La operacion no se pudo completar</p>
+            <p class="botonResultadoRojo"><i class="fa-solid fa-triangle-exclamation iconosAlerta"></i>Error. Se produjo
+                un error al intentar agregar resultados al informe</p>
+            <p class="botonResultadoAmarillo"><i class="fa-solid fa-exclamation iconosAlerta"></i>La operacion no se
+                pudo completar</p>
         </section>
         <section id="sec-titulo">
             <!--Seccion para agregar una palicula favorita por codigo-->
@@ -45,17 +47,20 @@
         </section>
         <section id="sec-contenido">
             <!--Seccion para contenido de la página-->
-            <div class="contenedorGrilla">
                 <table class="grilla">
+
                     <thead>
                         <tr>
-                            <th>PROVINCIA</th>
-                            <th>ELECCIÓN</th>
-                            <th>DATOS GENERALES</th>
-                            <th>DATOS POR AGRUPACIÓN</th>
+
+                            <th class="cabecera-grilla">PROVINCIA</th>
+                            <th class="cabecera-grilla">ELECCIÓN</th>
+                            <th class="cabecera-grilla">DATOS GENERALES</th>
+                            <th class="cabecera-grilla">DATOS POR AGRUPACIÓN</th>
+
                         </tr>
                     </thead>
-                    <tbody class="cuerpoGrilla">
+                    <tbody>
+                        <div>
                         <tr>
                             <th class="thMap">
                                 <svg height="210" width="210" class="map">
@@ -554,34 +559,33 @@
                                     </div>
                                 </div>
                             </th>
-                            <th>
+                            <th class="grid-agrupacion">
                                 <div class="partidos">
                                     <p class="subTitulo">JUNTOS</p>
-                                    <div>
-                                        <p class="peso">38%</p>
-                                        <p class="peso">3.480.298 votos</p>
-                                    </div>
+                                </div>
+                                <div>
+                                    <p class="peso">38%</p>
+                                    <p class="peso">3.480.298 votos</p>
                                 </div>
                                 <div class="partidos">
                                     <p class="subTitulo">FRENTE VAMOS CON VOS</p>
-                                    <div>
-                                        <p class="peso">4.37%</p>
-                                        <p class="peso">382.445 votos</p>
-                                    </div>
+                                </div>
+                                <div>
+                                    <p class="peso">4.37%</p>
+                                    <p class="peso">382.445 votos</p>
                                 </div>
                                 <div class="partidos">
                                     <p class="subTitulo">AVANZA LIBERTAD</p>
-                                    <div>
-                                        <p class="peso">7.51%</p>
-                                        <p class="peso">656.498 votos</p>
-                                    </div>
+                                </div>
+                                <div>
+                                    <p class="peso">7.51%</p>
+                                    <p class="peso">656.498 votos</p>
                                 </div>
                             </th>
                         </tr>
-
+                    </div>
                     </tbody>
                 </table>
-            </div>
         </section>
     </main>
     <!--Pie de página-->

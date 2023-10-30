@@ -52,7 +52,7 @@
 }
 
 .botonNavPaso {
-    border: none;
+    border: solid 2px var(--magenta);
     background-color: var(--magenta);
     border-radius: 8px;
     padding: 10px 30px;
@@ -68,7 +68,7 @@
 }
 
 .botonNavGeneral {
-    border: none;
+    border: solid 2px var(--celeste);
     background-color: var(--celeste);
     border-radius: 8px;
     padding: 10px 20px;
@@ -155,26 +155,38 @@
     font-size: 18px;
 }
 
+
 /*-----------BOTON RESULTADOS TERMINA-----------*/
 
 /*-----------GRILLA EMPIEZA-----------*/
+
+thead tr th{
+    
+    display: inline-block; 
+    width: 21%;
+}
+
+tbody{
+    overflow-y: scroll;
+    display: block;
+    max-height: 300px;
+    
+}
+
 .reporte {
     margin-left: 30px;
 }
 
-.contenedorGrilla {
-    width: auto;
-    height: 350px;
-    overflow: scroll;
-    border-radius: 15px;
-    border: 1px solid var(--borde-Grilla);
-    border-collapse: collapse;
-    margin: 30px;
-}
+
 
 .grilla {
     margin: 0 auto 50px auto;
     background-color: rgb(250, 250, 250);
+    border-radius: 15px;
+    border: 1px solid var(--borde-Grilla);
+    border-collapse: collapse;
+    width: 1024px;
+    
 }
 
 tr:hover {
@@ -184,7 +196,7 @@ tr:hover {
 td {
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid var(--borde-inferior-Grilla);
-    padding: 15px 0px;
+    
     font-size: 12px;
 }
 
@@ -253,5 +265,13 @@ th {
     justify-content: space-between;
 }
 
-
+.cabecera-grilla {
+    border-bottom: solid 2px black;
+    
+}
+.grid-agrupacion{
+    display: grid;
+    grid-template-columns: repeat(2,50px);
+    align-items: start;
+}
 /*-----------GRILLA TERMINA-----------*/

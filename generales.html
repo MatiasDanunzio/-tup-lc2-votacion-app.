@@ -10,8 +10,9 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Estilos CSS -->
-    <link rel="stylesheet" href="./css/pages/generales.css">
+    <link rel="stylesheet" href="css/pages/generales.css">
     <link rel="stylesheet" href="css/common.css" />
+    <script defer src="js/pages/general.js"></script>
 </head>
 
 <body>
@@ -23,33 +24,27 @@
         <!--Barra de menú principal-->
         <ul class="nav-page">
             <div class="nav-page-left">
-                <li>
-                    <select name="anio" id="anio" class="combos">
-                        <option value="anio">Año</option>
-                        <option value="">2022</option>
-                        <option value="">2023</option>
-                    </select>
-                </li>
-                <li>
-                    <select name="cargo" id="cargo" class="combos">
-                        <option value="cargo">Cargo</option>
-                        <option value="">Diputado</option>
-                        <option value="">Senador</option>
-                    </select>
-                </li>
-                <li>
-                    <select name="distrito" id="distrito" class="combos">
-                        <option value="distrito">Distrito</option>
-                        <option value="">Buenos Aires</option>
-                        <option value="">Corrientes</option>
-                    </select>
-                </li>
+                <select id="periodoSelect" class="combos">
+                    <option value="">Año</option>
+                </select>
+
+                <select id="cargoSelect" class="combos">
+                    <option value="">Cargo</option>
+                </select>
+
+                <select id="distritoSelect" class="combos">
+                    <option value="">Distrito</option>
+                </select>
+                <select id="seccionSelect" class="combos">
+                    <option value="">Selecciona una sección</option>
+                </select>
+                <input type="hidden" id="hdSeccionProvincial" name="hdSeccionProvincial">
                 <li><a href="" class="filtrar"><i class="fa-solid fa-magnifying-glass icono-filtrar"></i>FILTRAR</a>
                 </li>
-                <li><a href="./paso.html" class="paso">PASO</a></li>
-                <li><a href="./informes.html" class="informes">INFORMES</a></li>
+                <li><a href="/paso.html" class="paso">PASO</a></li>
+                <li><a href="/informes.html" class="informes">INFORMES</a></li>
             </div>
-            <li><a href="./index.html" class="inicio">INICIO</a></li>
+            <li><a href="/index.html" class="inicio">INICIO</a></li>
         </ul>
     </header>
     <!-- Contenido principal de la página -->
@@ -119,7 +114,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p>Mesas computadas</p>
+                        <p class="textos-recuadros">Mesas computadas</p>
                         <p>2,586</p>
                     </div>
                 </div>
@@ -213,7 +208,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p>Electores</p>
+                        <p class="textos-recuadros">Electores</p>
                         <p>876,580</p>
                     </div>
                 </div>
@@ -274,7 +269,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p>Participacion sobre escrutado</p>
+                        <p class="textos-recuadros">Participacion sobre escrutado</p>
                         <p>65,2%</p>
                     </div>
                 </div>
@@ -282,31 +277,36 @@
         </section>
         <section class="cuadrosDetalle">
             <div class="agrupacionPolitica recuadros">
-                <h3 class="title">Agrupacion Politica</h3>
-                <p class="subTitulo tituloAgrupacion">JUNTOS POR EL CAMBIO</p>
-                <div class="partidos">
-                    <p class="subTitulo">JUNTOS</p>
-                    <div>
-                        <p class="peso">38%</p>
-                        <p class="peso">30000 VOTOS</p>
-                    </div>
+                <div>
+                    <h3 class="title">Agrupacion Politica</h3>
                 </div>
-                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                        <span class="progress-bar-text">75%</span>
+                <div class="contenedor-cuadro-politica">
+                    <p class="subTitulo tituloAgrupacion">JUNTOS POR EL CAMBIO</p>
+                    <div class="partidos">
+                        <p class="subTitulo">JUNTOS</p>
+                        <div>
+                            <p class="peso">38%</p>
+                            <p class="peso">30000 VOTOS</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="partidos">
-                    <p class="subTitulo">PJ</p>
-                    <div>
-                        <p class="peso">20%</p>
-                        <p class="peso">12000 VOTOS</p>
+                    <div class="progress" style="background: var(--grafica-amarillo-claro);">
+                        <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
+                            <span class="progress-bar-text">75%</span>
+                        </div>
                     </div>
-                </div>
-                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                        <span class="progress-bar-text">15%</span>
+
+                    <div class="partidos">
+                        <p class="subTitulo">PJ</p>
+                        <div>
+                            <p class="peso">20%</p>
+                            <p class="peso">12000 VOTOS</p>
+                        </div>
+                    </div>
+                    <div class="progress" style="background: var(--grafica-amarillo-claro);">
+                        <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
+                            <span class="progress-bar-text">15%</span>
+                        </div>
                     </div>
                 </div>
             </div>
