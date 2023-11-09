@@ -150,35 +150,115 @@
     text-align: center;
 }
 
+.iconosAlerta {
+    padding-right: 5px;
+    font-size: 18px;
+}
+
 /*-----------BOTON RESULTADOS TERMINA-----------*/
 
 /*-----------GRILLA EMPIEZA-----------*/
+.reporte {
+    margin-left: 30px;
+}
+
 .grilla {
-    width: 1024px;
-    margin: 0 auto 50px auto;
     border-radius: 15px;
     border: 1px solid var(--borde-Grilla);
     border-collapse: collapse;
+    width: 1024px;
+    margin: 0 auto 50px auto;
     background-color: rgb(250, 250, 250);
 }
-tr:hover{
+.borde{
+    border-bottom: solid 1px black;
+}
+
+.cuerpoGrilla{
+    overflow: scroll;
+}
+
+tr:hover {
     background-color: rgb(250, 250, 250);
 }
+
 td{
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid var(--borde-inferior-Grilla);
     padding: 15px 0px;
     font-size: 12px;
-    
 }
-.texto-elecciones-chico{
+
+th{
+    padding: 20px;
+    vertical-align: top;
+
+}
+
+.texto-elecciones-chico {
     font-size: 12px;
     color: var(--textos);
     font-weight: bold;
 }
-.texto-path-chico{
+
+.texto-path-chico {
     font-size: 11px;
     color: var(--celeste);
+}
+
+
+.cajaRecuadros {
+    display: flex;
+}
+
+.recuadrosInformativos {
+    display: flex;
+    border-radius: 10px;
+    margin: 2px;
+    height: 70px;
+    width: 120px;
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+    align-items: center;
+}
+
+.recuadrosInformativos p {
+    color: white;
+    text-align: start;
+}
+
+.mesas {
+    background-color: var(--celeste);
+}
+
+.electores {
+    background-color: var(--magenta);
+}
+
+.participacion {
+    background-color: var(--morado);
+}
+
+
+.peso {
+    color: var(--textos);
+    font-size: 11px;
+    padding: 5px;
+    text-transform: uppercase;
+}
+
+.subTitulo {
+    font-weight: bold;
+}
+
+.partidos {
+    display: flex;
+    justify-content: space-between;
+}
+.grid-agrupacion{
+    display: grid;
+    grid-template-columns: repeat(2,50px);
+    align-items: start;
 }
 
 /*-----------GRILLA TERMINA-----------*/

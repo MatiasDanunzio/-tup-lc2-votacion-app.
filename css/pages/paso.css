@@ -33,6 +33,8 @@
     --mensaje-usuario-rojo: #dc3545;
 }
 
+
+
 /*------------NAVBAR PASO EMPIEZA  --------------*/
 .nav-page {
     display: flex;
@@ -48,12 +50,15 @@
     text-decoration: none;
     padding: 10px;
 }
-.nav-page li{
+
+.nav-page li {
     padding: 0px 4px;
 }
-.nav-page-left{
+
+.nav-page-left {
     display: flex;
 }
+
 .filtrar {
     background-color: white;
     border-radius: 15px;
@@ -100,26 +105,30 @@
     width: 90px;
     justify-content: center;
 }
-.icono-filtrar{
+
+.icono-filtrar {
     text-align: center;
     padding: 1px;
     margin-right: 8px;
 }
+
 .inicio {
     border-radius: 5px;
     padding: 5px;
     font-size: 10px;
     text-transform: uppercase;
     text-align: center;
-    color: #FFF;display: flex;
+    color: #FFF;
+    display: flex;
     width: 90px;
     justify-content: center;
-  }
-  
-  .inicio:hover {
+}
+
+.inicio:hover {
     color: var(--textos);
-  }
-  .informes {
+}
+
+.informes {
     border: solid 2px;
     border-color: var(--gris-claro);
     padding: 10px 20px;
@@ -129,12 +138,13 @@
     text-align: center;
     text-decoration: none;
     border-radius: 15px;
-    margin-left:px;
+    margin-left: px;
     min-width: 90px;
     display: flex;
     justify-content: center;
-  }
-  .general {
+}
+
+.general {
     border: none;
     background-color: var(--celeste);
     border-radius: 8px;
@@ -147,8 +157,8 @@
     text-decoration: none;
     display: flex;
     justify-content: center;
-  }
-  
+}
+
 /*------------NAVBAR PASO TERMINA -------------*/
 
 /*-----------BOTON RESULTADOS EMPIEZA-----------*/
@@ -189,6 +199,12 @@
     text-align: center;
 }
 
+.iconosAlerta {
+    padding-right: 5px;
+    font-size: 18px;
+}
+
+
 /*-----------BOTON RESULTADOS TERMINA-----------*/
 
 /* -------------- CONTENIDO PASO EMPIEZA -----------------*/
@@ -206,6 +222,11 @@
     display: flex;
 }
 
+#sec-titulo {
+    margin: 10px;
+    margin-left: 30px;
+}
+
 .recuadrosInformativos {
     display: flex;
     border-radius: 10px;
@@ -214,6 +235,7 @@
     width: 184px;
     padding: 0.5rem 1rem;
     font-size: 12px;
+    align-items: center;
 }
 
 .recuadrosInformativos p {
@@ -242,6 +264,8 @@
     text-transform: uppercase;
     border: none;
     height: 50px;
+    margin: 10px;
+    margin-left: 30px;
 }
 
 .agInforme:hover {
@@ -250,6 +274,8 @@
 
 .cuadrosDetalle {
     display: flex;
+    margin: 30px;
+    justify-content: center;
 }
 
 .agrupacionPolitica {

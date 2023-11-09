@@ -51,7 +51,7 @@ body {
   background-color: rgb(240, 240, 240);
 }
 
-p{
+p {
   font-size: 12px;
   color: var(--textos);
 }
@@ -78,20 +78,23 @@ h3 {
   margin-top: 0px auto;
   padding: 0.5em;
 }
+
 .header-page img {
   width: 150px;
 }
+
 /*------------ CONTENIDO GENERAL TERMINA --------------*/
 
 /*---------- EMPIEZA FOOTER ------------------*/
-footer{
+footer {
   background-color: var(--fondo-Footer);
-  height: auto;
+  height: 100px;
   width: 100%;
   display: flex;
   justify-content: center;
 }
-footer p{
+
+footer p {
   color: var(--texto-footer);
   font-size: 12px;
   max-width: 700px;
@@ -105,7 +108,7 @@ footer img {
 
 }
 
-footer p a{
+footer p a {
   text-decoration: none;
   color: var(--celeste);
 }
