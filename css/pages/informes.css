@@ -166,10 +166,48 @@
     border-radius: 15px;
     border: 1px solid var(--borde-Grilla);
     border-collapse: collapse;
-    width: 1024px;
+    width: auto;
     margin: 0 auto 50px auto;
     background-color: rgb(250, 250, 250);
 }
+
+.theadGrilla{
+    display: block;
+    width: 1280px;
+}
+
+.thProvincia{
+    width: 240px;
+}
+
+.thEleccion{
+    width: 80px;
+}
+
+.thDatosGenerales{
+    width: 540px;
+}
+
+.thDatosAgrupacion{
+    width: 270px;
+}
+
+.tbodyGrilla{
+    overflow: scroll;
+    max-height: 450px;
+    display: block;
+}
+
+.eleccion{
+    max-width: 150px;
+}
+
+.datosGenerales{    
+    min-width: 500px;
+}
+
+
+
 .borde{
     border-bottom: solid 1px black;
 }
@@ -257,7 +295,7 @@ th{
 }
 .grid-agrupacion{
     display: grid;
-    grid-template-columns: repeat(2,50px);
+    grid-template-columns: repeat(2,100px);
     align-items: start;
 }
 

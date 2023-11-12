@@ -1,16 +1,12 @@
 const informesKey = "INFORMES";
 
-export function almacenarInforme(periodoSelect, cargoSelect, distritoSelect, seccionSelect, tipoRecuento, tipoEleccion, categoriaId, seccionProvincialId) {
+export function almacenarInforme(anioEleccion, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvincialId, seccionId, circuitoId, mesaId) {
 
-    const selectedAño = periodoSelect.value;
-    const selectedCargo = cargoSelect.value;
-    const selectedDistrito = distritoSelect.value;
-    const selectedSeccion = seccionSelect.value;
     const botonRojo = document.getElementById("botonRojo");
     const botonAmarillo = document.getElementById("botonAmarillo");
     const botonVerde = document.getElementById("botonVerde");
 
-    const nuevoRegistro = `${selectedAño}|${tipoRecuento}|${tipoEleccion}|${categoriaId}|${selectedDistrito}|${seccionProvincialId}|${selectedSeccion}|${selectedCargo}`;
+    const nuevoRegistro = `${anioEleccion}|${tipoRecuento}|${tipoEleccion}|${categoriaId}|${distritoId}|${seccionProvincialId}|${seccionId}|${circuitoId}|${mesaId}`;
 
     // Obtener la lista actual de informes almacenados
     const informesAlmacenados = obtenerInformesAlmacenados();
@@ -38,7 +34,6 @@ export function almacenarInforme(periodoSelect, cargoSelect, distritoSelect, sec
 }
 
 export function obtenerInformesAlmacenados() {
-
     // Obtener la lista actual de informes almacenados desde localStorage
     const informesString = localStorage.getItem(informesKey);
     return informesString ? JSON.parse(informesString) : [];

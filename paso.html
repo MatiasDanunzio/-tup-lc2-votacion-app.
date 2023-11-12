@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema de Publicación de Resultados Electorales</title>
     <link rel="shortcut icon" type="image/png" href="favicon-16x16.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="./css/pages/paso.css">
     <link rel="stylesheet" href="css/common.css" />
     <script defer type="module" src="./js/pages/paso.js"></script>
     <script defer type="module" src="./js/mapas.js"></script>
     <script defer type="module" src="./js/keyInformes.js"></script>
+    <script defer type="module" src="./js/colorAgrupaciones.js"></script>
 </head>
 
 <body>
@@ -27,11 +30,11 @@
                 <select id="periodoSelect" class="combos">
                     <option value="">Año</option>
                 </select>
-                
+
                 <select id="cargoSelect" class="combos">
                     <option value="">Cargo</option>
                 </select>
-                
+
                 <select id="distritoSelect" class="combos">
                     <option value="">Distrito</option>
                 </select>
@@ -40,32 +43,42 @@
                     <option value="">Selecciona una sección</option>
                 </select>
                 <input type="hidden" id="hdSeccionProvincial" name="hdSeccionProvincial">
-                
-                
+
+
                 <input type="hidden" id="hdSeccionProvincial" name="hdSeccionProvincial">
-            <li><button id="filtrarButton" class="filtrar"><i class="fa-solid fa-magnifying-glass icono-filtrar"></i>FILTRAR</button></li>
-            <li><a href="./generales.html" class="general">GENERAL</a></li>
-            <li><a href="./informes.html" class="informes">INFORMES</a></li>
+                <li><button id="filtrarButton" class="filtrar"><i
+                            class="fa-solid fa-magnifying-glass icono-filtrar"></i>FILTRAR</button></li>
+                <li><a href="./generales.html" class="general">GENERAL</a></li>
+                <li><a href="./informes.html" class="informes">INFORMES</a></li>
             </div>
             <li><a href="./index.html" class="inicio">INICIO</a></li>
         </ul>
     </header>
     <!-- Contenido principal de la página -->
     <main>
-        <section id="sec-mensaje" style="display: none;" >
-            <p class="botonResultadoVerde" id="botonVerde"><i class="fa-solid fa-thumbs-up iconosAlerta"></i>Se agrego con exito el resultado al informe</p>
-            <p class="botonResultadoRojo" id="botonRojo"><i class="fa-solid fa-triangle-exclamation iconosAlerta"></i>Error. Se produjo un error al intentar agregar resultados al informe</p>
-            <p class="botonResultadoAmarillo" id="botonAmarillo"><i class="fa-solid fa-exclamation iconosAlerta"></i>La operacion no se pudo completar</p>
+        <section id="sec-mensaje" style="display: none;">
+            <p class="botonResultadoVerde" id="botonVerde"><i class="fa-solid fa-thumbs-up iconosAlerta"></i>Se agrego
+                con exito el resultado al informe</p>
+            <p class="botonResultadoRojo" id="botonRojo"><i
+                    class="fa-solid fa-triangle-exclamation iconosAlerta"></i>Error. Se produjo un error al intentar
+                agregar resultados al informe</p>
+            <p class="botonResultadoAmarillo" id="botonAmarillo"><i class="fa-solid fa-exclamation iconosAlerta"></i>La
+                operacion no se pudo completar</p>
         </section>
-        <div id="messageContainer"></div>
+        <div id="messageContainer" class="botonResultadoAmarillo"><i
+                class="fa-solid fa-exclamation iconosAlerta"></i>Debe seleccionar los valores a filtrar y hacer clic en
+            el botón FILTRAR</div>
         <section id="sec-titulo" style="display: none;">
             <!--Seccion para agregar una palicula favorita por codigo-->
             <h2 id="eleccionesPaso"></h2>
             <p class="texto-path" id="path-Paso"></p>
         </section>
         <section id="sec-contenido" style="display: none;">
+            <div id="overlay" class="overlay">
+                <div id="spinnerIcono" class="spinnerIcono"></div>
+            </div>
             <!--Seccion para contenido de la página-->
-            <button class="agInforme">+ AGREGAR A INFORME</button>
+            <button class="agInforme" id="agregarInforme">+ AGREGAR A INFORME</button>
             <div class="cajaRecuadros">
                 <div class="recuadrosInformativos mesas">
                     <div>
@@ -277,62 +290,22 @@
             </div>
         </section>
         <section id="sec-cuadros" class="cuadrosDetalle" style="display: none;">
-            <div class="agrupacionPolitica recuadros">
-                <h3 class="title">Agrupacion Politica</h3>
-                <p class="subTitulo tituloAgrupacion">JUNTOS POR EL CAMBIO</p>
-                <div class="partidos">
-                    <p class="subTitulo">JUNTOS</p>
-                    <div>
-                        <p class="peso">38%</p>
-                        <p class="peso">30000 VOTOS</p>
-                    </div>
-                </div>
-                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                        <span class="progress-bar-text">75%</span>
-                    </div>
-                </div>
 
-                <div class="partidos">
-                    <p class="subTitulo">PJ</p>
-                    <div>
-                        <p class="peso">20%</p>
-                        <p class="peso">12000 VOTOS</p>
-                    </div>
-                </div>
-                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                        <span class="progress-bar-text">15%</span>
-                    </div>
-                </div>
+            <div class="agrupacion recuadros">
+                <h3 class="agrupacion">Agrupacion Politica</h3>
+                <div id="graficoAgrupacionPolitica"></div>
             </div>
 
 
-            <div class="recuadros mapaCaja" >
-                <h2 id="nombreMapa"></h2>
-                <div  id="mapaElement"></div>
+            <div class="recuadros mapaCaja">
+                <h2 id="nombreMapa" class="nombresMapa"></h2>
+                <div id="mapaElement" class="mapaElements"></div>
             </div>
-
 
             <div class="chart-wrap horizontal recuadros">
                 <div class="title">Resumen de Votos</div>
-                <div class="grid">
-                    <div class="bar" style="--bar-value:85%;--bar-color:var(--grafica-amarillo);" data-name="Partido 1"
-                        title="Your Blog 85%"></div>
-                    <div class="bar" style="--bar-value:23%;--bar-color:var(--grafica-lila2);" data-name="Partido 2"
-                        title="Medium 23%"></div>
-                    <div class="bar" style="--bar-value:7%;--bar-color:var(--grafica-bordo);" data-name="Partido 3"
-                        title="Tumblr 7%"></div>
-                    <div class="bar" style="--bar-value:38%;--bar-color:var(--grafica-celeste);" data-name="Partido 4"
-                        title="Facebook 38%"></div>
-                    <div class="bar" style="--bar-value:35%;--bar-color:var(--grafica-lila-claro);"
-                        data-name="Partido 5" title="YouTube 35%"></div>
-                    <div class="bar" style="--bar-value:30%;--bar-color:var(--grafica-rojo);" data-name="Partido 6"
-                        title="LinkedIn 30%"></div>
-                    <div class="bar" style="--bar-value:5%;--bar-color:var(--grafica-gris);" data-name="Partido 7"
-                        title="Twitter 5%"></div>
-                    <div class="bar" style="--bar-value:20%;--bar-color:var(--grafica-verde);" data-name="Otros"
-                        title="Other 20%"></div>
+                <div class="grid" id="resumenVotos">
+
                 </div>
             </div>
 

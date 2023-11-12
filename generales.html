@@ -12,6 +12,10 @@
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="./css/pages/generales.css">
     <link rel="stylesheet" href="css/common.css" />
+    <script defer type="module" src="./js/pages/general.js"></script>
+    <script defer type="module" src="./js/mapas.js"></script>
+    <script defer type="module" src="./js/keyInformes.js"></script>
+    <script defer type="module" src="./js/colorAgrupaciones.js"></script>
 </head>
 
 <body>
@@ -23,29 +27,27 @@
         <!--Barra de menú principal-->
         <ul class="nav-page">
             <div class="nav-page-left">
-                <li>
-                    <select name="anio" id="anio" class="combos">
-                        <option value="anio">Año</option>
-                        <option value="">2022</option>
-                        <option value="">2023</option>
-                    </select>
-                </li>
-                <li>
-                    <select name="cargo" id="cargo" class="combos">
-                        <option value="cargo">Cargo</option>
-                        <option value="">Diputado</option>
-                        <option value="">Senador</option>
-                    </select>
-                </li>
-                <li>
-                    <select name="distrito" id="distrito" class="combos">
-                        <option value="distrito">Distrito</option>
-                        <option value="">Buenos Aires</option>
-                        <option value="">Corrientes</option>
-                    </select>
-                </li>
-                <li><a href="" class="filtrar"><i class="fa-solid fa-magnifying-glass icono-filtrar"></i>FILTRAR</a>
-                </li>
+                <select id="periodoSelect" class="combos">
+                    <option value="">Año</option>
+                </select>
+
+                <select id="cargoSelect" class="combos">
+                    <option value="">Cargo</option>
+                </select>
+
+                <select id="distritoSelect" class="combos">
+                    <option value="">Distrito</option>
+                </select>
+
+                <select id="seccionSelect" class="combos">
+                    <option value="">Selecciona una sección</option>
+                </select>
+                <input type="hidden" id="hdSeccionProvincial" name="hdSeccionProvincial">
+
+
+                <input type="hidden" id="hdSeccionProvincial" name="hdSeccionProvincial">
+                <li><button id="filtrarButton" class="filtrar"><i
+                            class="fa-solid fa-magnifying-glass icono-filtrar"></i>FILTRAR</button></li>
                 <li><a href="./paso.html" class="paso">PASO</a></li>
                 <li><a href="./informes.html" class="informes">INFORMES</a></li>
             </div>
@@ -54,22 +56,29 @@
     </header>
     <!-- Contenido principal de la página -->
     <main>
-        <section id="sec-mensaje">
-            <p class="botonResultadoVerde"><i class="fa-solid fa-thumbs-up iconosAlerta"></i>Se agrego con
-                exito el resultado al informe</p>
-            <p class="botonResultadoRojo"><i class="fa-solid fa-triangle-exclamation iconosAlerta"></i>Error. Se produjo
-                un error al intentar agregar resultados al informe</p>
-            <p class="botonResultadoAmarillo"><i class="fa-solid fa-exclamation iconosAlerta"></i>La operacion no se
-                pudo completar</p>
+        <section id="sec-mensaje" style="display: none;">
+            <p class="botonResultadoVerde" id="botonVerde"><i class="fa-solid fa-thumbs-up iconosAlerta"></i>Se agrego
+                con exito el resultado al informe</p>
+            <p class="botonResultadoRojo" id="botonRojo"><i
+                    class="fa-solid fa-triangle-exclamation iconosAlerta"></i>Error. Se produjo un error al intentar
+                agregar resultados al informe</p>
+            <p class="botonResultadoAmarillo" id="botonAmarillo"><i class="fa-solid fa-exclamation iconosAlerta"></i>La
+                operacion no se pudo completar</p>
         </section>
-        <section id="sec-titulo">
+        <div id="messageContainer" class="botonResultadoAmarillo"><i
+                class="fa-solid fa-exclamation iconosAlerta"></i>Debe seleccionar los valores a filtrar y hacer clic en
+            el botón FILTRAR</div>
+        <section id="sec-titulo" style="display: none;">
             <!--Seccion para agregar una palicula favorita por codigo-->
-            <h2>Elecciones 2021 | Generales</h2>
-            <p class="texto-path">2020 > Generales > Provisorio > Senadores Nacionales > Buenos Aires</p>
+            <h2 id="eleccionesPaso"></h2>
+            <p class="texto-path" id="path-Paso"></p>
         </section>
-        <section id="sec-contenido">
+        <section id="sec-contenido" style="display: none;">
+            <div id="overlay" class="overlay">
+                <div id="spinnerIcono" class="spinnerIcono"></div>
+            </div>
             <!--Seccion para contenido de la página-->
-            <button class="agInforme">+ AGREGAR A INFORME</button>
+            <button class="agInforme" id="agregarInforme">+ AGREGAR A INFORME</button>
             <div class="cajaRecuadros">
                 <div class="recuadrosInformativos mesas">
                     <div>
@@ -120,7 +129,7 @@
                     </div>
                     <div>
                         <p>Mesas computadas</p>
-                        <p>2,586</p>
+                        <p id="mesasComputadas"></p>
                     </div>
                 </div>
                 <div class="recuadrosInformativos electores">
@@ -214,7 +223,7 @@
                     </div>
                     <div>
                         <p>Electores</p>
-                        <p>876,580</p>
+                        <p id="electores"></p>
                     </div>
                 </div>
                 <div class="recuadrosInformativos participacion">
@@ -275,70 +284,28 @@
                     </div>
                     <div>
                         <p>Participacion sobre escrutado</p>
-                        <p>65,2%</p>
+                        <p id="participacion"></p>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="cuadrosDetalle">
-            <div class="agrupacionPolitica recuadros">
-                <h3 class="title">Agrupacion Politica</h3>
-                <p class="subTitulo tituloAgrupacion">JUNTOS POR EL CAMBIO</p>
-                <div class="partidos">
-                    <p class="subTitulo">JUNTOS</p>
-                    <div>
-                        <p class="peso">38%</p>
-                        <p class="peso">30000 VOTOS</p>
-                    </div>
-                </div>
-                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                        <span class="progress-bar-text">75%</span>
-                    </div>
-                </div>
+        <section id="sec-cuadros" class="cuadrosDetalle" style="display: none;">
 
-                <div class="partidos">
-                    <p class="subTitulo">PJ</p>
-                    <div>
-                        <p class="peso">20%</p>
-                        <p class="peso">12000 VOTOS</p>
-                    </div>
-                </div>
-                <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                    <div class="progress-bar" style="width:15%; background: var(--graficaamarillo);">
-                        <span class="progress-bar-text">15%</span>
-                    </div>
-                </div>
+            <div class="agrupacion recuadros">
+                <h3 class="agrupacion">Agrupacion Politica</h3>
+                <div id="graficoAgrupacionPolitica"></div>
             </div>
+
+
             <div class="recuadros mapaCaja">
-                <h3 class="title">Corrientes</h3>
-                <svg height="auto" width="auto" class="mapa">
-                    <path class="leaflet-interactive" stroke="#18a0fb" stroke-opacity="1" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" fill="#18a0fb" fill-opacity="1"
-                        fill-rule="evenodd"
-                        d="M106 135L108 138L109 135L116 136L122 132L123 133L131 130L139 134L143 141L148 145L147 139L151 137L153 133L152 131L154 131L159 126L160 121L168 117L169 114L174 109L176 103L180 102L183 95L186 93L189 87L192 86L193 83L197 85L195 80L197 80L198 78L194 73L194 69L188 60L189 58L186 57L180 64L177 60L174 60L173 62L170 60L164 61L145 55L130 56L127 58L124 61L126 69L125 72L123 77L120 77L119 80L120 91L117 100L116 102L114 102L112 106L110 106L108 111L108 117L106 121L109 127L106 133L107 135z">
-                    </path>
-                </svg>
+                <h2 id="nombreMapa" class="nombresMapa"></h2>
+                <div id="mapaElement" class="mapaElements"></div>
             </div>
+
             <div class="chart-wrap horizontal recuadros">
                 <div class="title">Resumen de Votos</div>
-                <div class="grid">
-                    <div class="bar" style="--bar-value:85%;--bar-color:var(--grafica-amarillo);" data-name="Partido 1"
-                        title="Your Blog 85%"></div>
-                    <div class="bar" style="--bar-value:23%;--bar-color:var(--grafica-lila2);" data-name="Partido 2"
-                        title="Medium 23%"></div>
-                    <div class="bar" style="--bar-value:7%;--bar-color:var(--grafica-bordo);" data-name="Partido 3"
-                        title="Tumblr 7%"></div>
-                    <div class="bar" style="--bar-value:38%;--bar-color:var(--grafica-celeste);" data-name="Partido 4"
-                        title="Facebook 38%"></div>
-                    <div class="bar" style="--bar-value:35%;--bar-color:var(--grafica-lila-claro);"
-                        data-name="Partido 5" title="YouTube 35%"></div>
-                    <div class="bar" style="--bar-value:30%;--bar-color:var(--grafica-rojo);" data-name="Partido 6"
-                        title="LinkedIn 30%"></div>
-                    <div class="bar" style="--bar-value:5%;--bar-color:var(--grafica-gris);" data-name="Partido 7"
-                        title="Twitter 5%"></div>
-                    <div class="bar" style="--bar-value:20%;--bar-color:var(--grafica-verde);" data-name="Otros"
-                        title="Other 20%"></div>
+                <div class="grid" id="resumenVotos">
+                  
                 </div>
             </div>
 

@@ -65,6 +65,9 @@
     text-transform: uppercase;
     text-align: center;
     color: var(--textos);
+    height: 36px;
+    text-align: center;
+    align-items: center;
 }
 
 .inicio {
@@ -301,7 +304,17 @@
 }
 
 .mapaCaja {
-    margin: 25px;
+    margin: 0px 50px ;
+    justify-content: center;
+    align-items: center;
+}
+.nombresMapa{
+    text-align: center;
+}
+.mapaElements{
+    min-width: 400px;
+    display: flex;
+    justify-content: space-around;
 }
 
 /* --- BARRA DE PROGRESO EMPIEZA --- */
@@ -438,7 +451,7 @@
 }
 
 .chart-wrap .bar::after {
-    content: attr(data-name);
+    content: attr(title);
     margin-left: 100%;
     padding: 10px;
     display: inline-block;
@@ -446,3 +459,39 @@
 }
 
 /*------- RESUMEN DE FOTOS CIERRE -----------*/
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinnerIcono {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top:50%;
+    left: 50%;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

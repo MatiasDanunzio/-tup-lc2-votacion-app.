@@ -2,6 +2,7 @@ import { obtenerProvinciaPorDistrito, mapasProvinciales, nombresProvinciales } f
 
 import { almacenarInforme, obtenerInformesAlmacenados } from '../keyInformes.js';
 
+import { coloresAgrupaciones } from '../colorAgrupaciones.js'
 
 const tipoEleccion = 1; //1 PASO, 2 GENERALES
 const tipoRecuento = 1; // Recuento definitivo
@@ -137,17 +138,22 @@ distritoSelect.addEventListener("change", () => {
   }
 });
 
-
-const messageContainer = document.getElementById("messageContainer");
-const mensaje_amarillo = document.createElement("div");
-mensaje_amarillo.innerText = "Debe seleccionar los valores a filtrar y hacer clic en el botón FILTRAR";
-mensaje_amarillo.style.backgroundColor = "yellow";
-messageContainer.appendChild(mensaje_amarillo);
-
 const filtrarButton = document.getElementById("filtrarButton");
+const overlay = document.getElementById("overlay");
+
+function ocultarIcono() {
+  overlay.style.display = "none";
+}
+
+function mostrarIcono() {
+    overlay.style.display = "block";
+    setTimeout(function () {
+      ocultarIcono();
+    }, 5000);
+}
 
 filtrarButton.addEventListener("click", async () => {
-
+  mostrarIcono();
   const selectedAño = periodoSelect.value;
   const selectedCargo = cargoSelect.value;
   const selectedDistrito = distritoSelect.value;
@@ -160,7 +166,7 @@ filtrarButton.addEventListener("click", async () => {
   }
 
   const anioEleccion = selectedAño;
-  const categoriaId = 2;
+  const categoriaId = selectedCargo;
   const distritoId = selectedDistrito;
   const seccionProvincialId = 0;
   const seccionId = selectedSeccion;
@@ -184,11 +190,12 @@ filtrarButton.addEventListener("click", async () => {
   if (data) {
     const messageContainer = document.getElementById("messageContainer");
     messageContainer.innerHTML = "";
+    messageContainer.style.display = "none";
 
     document.getElementById("sec-mensaje").style.display = "none";
     document.getElementById("sec-titulo").style.display = "block";
     document.getElementById("sec-contenido").style.display = "flex";
-    document.getElementById("sec-cuadros").style.display = "flex"
+    document.getElementById("sec-cuadros").style.display = "flex";
 
     const selectedAño = periodoSelect.value;
     const selectedCargo = cargoSelect.options[cargoSelect.selectedIndex].text;
@@ -223,23 +230,155 @@ filtrarButton.addEventListener("click", async () => {
         electores.innerHTML = `${cantidadElectores}`;
         participacion.innerHTML = `${participacionPorcentaje}%`;
 
+        const valoresTotalizadosPositivos = data.valoresTotalizadosPositivos
+
+        const contenedorGrafico = document.getElementById("graficoAgrupacionPolitica");
+        contenedorGrafico.innerHTML = "";
+
+        const agrupacionPolitica = document.createElement("div");
+        agrupacionPolitica.classList.add("agrupacionPolitica");
+
+        valoresTotalizadosPositivos.forEach(valor => {
+          const idAgrupacion = valor.idAgrupacion;
+          let colorPleno, colorLiviano;
+
+
+          if (coloresAgrupaciones[idAgrupacion]) {
+            colorPleno = coloresAgrupaciones[idAgrupacion].colorPleno;
+            colorLiviano = coloresAgrupaciones[idAgrupacion].colorLiviano;
+          } else {
+
+            colorPleno = coloresAgrupaciones.defaultColor.colorPleno;
+            colorLiviano = coloresAgrupaciones.defaultColor.colorLiviano;
+          }
+
+          const nombreAgrupacion = valor.nombreAgrupacion;
+          const votosPorcentaje = valor.votosPorcentaje;
+
+          const nombreAgrupacionElement = document.createElement("p");
+          nombreAgrupacionElement.classList.add("title", "tituloAgrupacion");
+          nombreAgrupacionElement.textContent = nombreAgrupacion;
+
+          const partidos = document.createElement("div");
+          partidos.classList.add("partidos");
+
+          valor.listas.forEach(lista => {
+            const listaElement = document.createElement("div");
+            listaElement.classList.add("lista");
+
+            const nombreListaElement = document.createElement("p");
+            nombreListaElement.classList.add("subTitulo");
+            nombreListaElement.textContent = lista.nombre;
+
+            const votosPorcentajeListaElement = document.createElement("div");
+            votosPorcentajeListaElement.classList.add("subTitulo");
+
+            const porcentajeListaElement = document.createElement("p");
+            porcentajeListaElement.classList.add("peso");
+            porcentajeListaElement.textContent = `${(lista.votos * 100 / valor.votos).toFixed(2)}%`;
+
+            const votosListaElement = document.createElement("p");
+            votosListaElement.classList.add("peso");
+            votosListaElement.textContent = `${lista.votos} VOTOS`;
+
+            votosPorcentajeListaElement.appendChild(porcentajeListaElement);
+            votosPorcentajeListaElement.appendChild(votosListaElement);
+
+            listaElement.appendChild(nombreListaElement);
+            listaElement.appendChild(votosPorcentajeListaElement);
+
+            partidos.appendChild(listaElement);
+          });
+
+          const progress = document.createElement("div");
+          progress.classList.add("progress");
+          progress.style.background = colorLiviano;
+
+          const progressBar = document.createElement("div");
+          progressBar.classList.add("progress-bar");
+          progressBar.style.width = `${votosPorcentaje}%`;
+          progressBar.style.background = colorPleno;
+
+          const progressBarText = document.createElement("span");
+          progressBarText.classList.add("progress-bar-text");
+          progressBarText.textContent = `${votosPorcentaje}%`;
+
+          agrupacionPolitica.appendChild(nombreAgrupacionElement);
+          agrupacionPolitica.appendChild(partidos);
+
+          progressBar.appendChild(progressBarText);
+          progress.appendChild(progressBar);
+
+          agrupacionPolitica.appendChild(progress);
+
+          contenedorGrafico.appendChild(agrupacionPolitica);
+        });
+
+        const contenedorBarras = document.getElementById("resumenVotos");
+        contenedorBarras.innerHTML = "";
+        const max = 7;
+
+        valoresTotalizadosPositivos.slice(0, max).forEach(valor => {
+          // ... (código existente para obtener datos de la agrupación política)
+          const idAgrupacion = valor.idAgrupacion;
+          let colorPleno, colorLiviano;
+
+
+          if (coloresAgrupaciones[idAgrupacion]) {
+            colorPleno = coloresAgrupaciones[idAgrupacion].colorPleno;
+            colorLiviano = coloresAgrupaciones[idAgrupacion].colorLiviano;
+          } else {
+
+            colorPleno = coloresAgrupaciones.defaultColor.colorPleno;
+            colorLiviano = coloresAgrupaciones.defaultColor.colorLiviano;
+          }
+          const nombreAgrupacion = valor.nombreAgrupacion;
+          const votosPorcentaje = valor.votosPorcentaje;
+
+          const barra = document.createElement("div");
+          const votosPorcentajeNombre = parseFloat(votosPorcentaje);
+          const tituloBarra = nombreAgrupacion + " " + votosPorcentajeNombre + "%";
+          barra.title = tituloBarra;
+
+          barra.classList.add("bar");
+          barra.style.setProperty("--bar-value", `${votosPorcentaje}%`);
+          barra.style.setProperty("--bar-color", colorPleno);
+          barra.dataset.name = nombreAgrupacion;
+
+          contenedorBarras.appendChild(barra);
+        });
       }
+
     } catch (error) {
       console.error(error);
     }
 
   } else {
-    
-    messageContainer.innerHTML = ""; 
+
+    messageContainer.innerHTML = "";
     const mensaje_amarillo = document.createElement("div");
     mensaje_amarillo.innerText = "No se encontró información para la consulta realizada";
-    mensaje_amarillo.style.color = "yellow";
     messageContainer.appendChild(mensaje_amarillo);
   }
 
   messageContainer.innerHTML = "";
-  almacenarInforme(periodoSelect, cargoSelect, distritoSelect, seccionSelect, tipoRecuento, tipoEleccion, categoriaId, seccionProvincialId);
+
 });
+
+const agregarInforme = document.getElementById("agregarInforme");
+
+
+agregarInforme.addEventListener("click", async () => {
+  const anioEleccion = periodoSelect.value;
+  const categoriaId = cargoSelect.value;
+  const distritoId = distritoSelect.value;
+  const seccionProvincialId = 0;
+  const seccionId = seccionSelect.value;
+  const circuitoId = "";
+  const mesaId = "";
+  almacenarInforme(anioEleccion, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvincialId, seccionId, circuitoId, mesaId);
+
+})
 
 
 
