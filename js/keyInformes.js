@@ -1,12 +1,12 @@
 const informesKey = "INFORMES";
 
-export function almacenarInforme(anioEleccion, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvincialId, seccionId, circuitoId, mesaId) {
+export function almacenarInforme(anioEleccion, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvincialId, seccionId, circuitoId, mesaId,selectedCargo, selectedDistrito, selectedSeccion) {
 
     const botonRojo = document.getElementById("botonRojo");
     const botonAmarillo = document.getElementById("botonAmarillo");
     const botonVerde = document.getElementById("botonVerde");
 
-    const nuevoRegistro = `${anioEleccion}|${tipoRecuento}|${tipoEleccion}|${categoriaId}|${distritoId}|${seccionProvincialId}|${seccionId}|${circuitoId}|${mesaId}`;
+    const nuevoRegistro = `${anioEleccion}|${tipoRecuento}|${tipoEleccion}|${categoriaId}|${distritoId}|${seccionProvincialId}|${seccionId}|${circuitoId}|${mesaId}|${selectedCargo}|${selectedDistrito}|${selectedSeccion}`;
 
     // Obtener la lista actual de informes almacenados
     const informesAlmacenados = obtenerInformesAlmacenados();

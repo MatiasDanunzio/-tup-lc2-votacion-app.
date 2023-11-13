@@ -16,9 +16,12 @@ function mostrarInformeAlmacenados() {
             const seccionId = element[6];
             const circuitoId = element[7];
             const mesaId = element[8];
+            const selectedCargo = element[9];
+            const selectedDistrito = element[10];
+            const selectedSeccion = element[11];
             const url = `https://resultados.mininterior.gob.ar/api/resultados/getResultados?anioEleccion=${anio}&tipoRecuento=${tipoRecuento}&tipoEleccion=${tipoEleccion}&categoriaId=${categoriaId}&distritoId=${distritoId}&seccionProvincialId=${seccionProvinciaId}&seccionId=${seccionId}&circuitoId=${circuitoId}&mesaId=${mesaId}`;
             console.log(url);
-            crearTabla(url, anio, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvinciaId, seccionId, circuitoId, mesaId);
+            crearTabla(url, anio, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvinciaId, seccionId, circuitoId, mesaId,selectedCargo, selectedDistrito, selectedSeccion);
         });
 
 
@@ -26,7 +29,7 @@ function mostrarInformeAlmacenados() {
 }
 mostrarInformeAlmacenados();
 
-async function crearTabla(url, anio, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvinciaId, seccionId, circuitoId, mesaId) {
+async function crearTabla(url, anio, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvinciaId, seccionId, circuitoId, mesaId,selectedCargo, selectedDistrito, selectedSeccion) {
     let data2;
     try {
         const respuesta2 = await fetch(url);
@@ -65,7 +68,7 @@ async function crearTabla(url, anio, tipoRecuento, tipoEleccion, categoriaId, di
 
             const subtitulo = document.createElement("p");
             subtitulo.classList.add("texto-path-chico");
-            subtitulo.innerHTML = `${anio} > ${tipoEleccion} > ${categoriaId} > ${distritoId} > ${seccionId}`;
+            subtitulo.innerHTML = `${anio} > ${tipoEleccion} > ${selectedCargo} > ${selectedDistrito} > ${selectedSeccion}`;
 
             contenedorTitulo.appendChild(titulo);
             contenedorTitulo.appendChild(subtitulo);

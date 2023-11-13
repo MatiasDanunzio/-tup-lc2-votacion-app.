@@ -149,7 +149,7 @@ function mostrarIcono() {
     overlay.style.display = "block";
     setTimeout(function () {
       ocultarIcono();
-    }, 5000);
+    }, 2000);
 }
 
 
@@ -346,6 +346,10 @@ agregarInforme.addEventListener("click", async () => {
   const seccionId = seccionSelect.value;
   const circuitoId = "";
   const mesaId = "";
-  almacenarInforme(anioEleccion, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvincialId, seccionId, circuitoId, mesaId);
+  const selectedCargo = cargoSelect.options[cargoSelect.selectedIndex].text;
+  const selectedDistrito = distritoSelect.options[distritoSelect.selectedIndex].text;
+  const selectedSeccion = seccionSelect.options[seccionSelect.selectedIndex].text;
+
+  almacenarInforme(anioEleccion, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvincialId, seccionId, circuitoId, mesaId, selectedCargo, selectedDistrito, selectedSeccion);
 
 })

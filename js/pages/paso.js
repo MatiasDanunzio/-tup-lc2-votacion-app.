@@ -12,8 +12,9 @@ const cargoSelect = document.getElementById("cargoSelect");
 const distritoSelect = document.getElementById("distritoSelect");
 const seccionSelect = document.getElementById("seccionSelect");
 const hdSeccionProvincial = document.getElementById("hdSeccionProvincial");
-let error;
-
+let resultadoComboCargo;
+let resultadoComboDistrito;
+let resultadoComboSeccion;
 
 // Llenado del combo Año
 fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
@@ -43,6 +44,7 @@ periodoSelect.addEventListener("change", () => {
               const option = document.createElement("option");
               option.value = cargo.IdCargo;
               option.text = cargo.Cargo;
+              resultadoComboCargo = cargo.Cargo;
               cargoSelect.appendChild(option);
             });
           }
@@ -70,6 +72,7 @@ cargoSelect.addEventListener("change", () => {
                   const option = document.createElement("option");
                   option.value = distrito.IdDistrito;
                   option.text = distrito.Distrito;
+                  resultadoComboDistrito = distrito.Distrito;
                   distritoSelect.appendChild(option);
                 });
               }
@@ -124,6 +127,7 @@ distritoSelect.addEventListener("change", () => {
                         const option = document.createElement("option");
                         option.value = seccion.IdSeccion;
                         option.text = seccion.Seccion;
+                        resultadoComboSeccion = seccion.Seccion;
                         seccionSelect.appendChild(option);
                       });
                     });
@@ -149,7 +153,7 @@ function mostrarIcono() {
     overlay.style.display = "block";
     setTimeout(function () {
       ocultarIcono();
-    }, 5000);
+    }, 2000);
 }
 
 filtrarButton.addEventListener("click", async () => {
@@ -376,8 +380,11 @@ agregarInforme.addEventListener("click", async () => {
   const seccionId = seccionSelect.value;
   const circuitoId = "";
   const mesaId = "";
-  almacenarInforme(anioEleccion, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvincialId, seccionId, circuitoId, mesaId);
+  const selectedCargo = cargoSelect.options[cargoSelect.selectedIndex].text;
+  const selectedDistrito = distritoSelect.options[distritoSelect.selectedIndex].text;
+  const selectedSeccion = seccionSelect.options[seccionSelect.selectedIndex].text;
 
+  almacenarInforme(anioEleccion, tipoRecuento, tipoEleccion, categoriaId, distritoId, seccionProvincialId, seccionId, circuitoId, mesaId, selectedCargo, selectedDistrito, selectedSeccion);
 })
 
 
